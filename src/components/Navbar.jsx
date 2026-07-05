@@ -1,49 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const linkClass = (id) =>
+    `cursor-pointer transition ${
+      active === id ? "text-purple-400" : "text-gray-300"
+    } hover:text-purple-400`;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
-      
-      <div className="backdrop-blur-md bg-black/30 border-b border-white/10">
-        
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/20 border-b border-white/10">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 
-          {/* Logo */}
-          <h1 className="text-white font-bold text-xl">
-            Marija<span className="text-purple-500">.dev</span>
-          </h1>
+        <h1 className="font-bold text-xl">
+          Maria<span className="text-purple-400">.dev</span>
+        </h1>
 
-          {/* Links */}
-          <div className="hidden md:flex gap-8 text-gray-300">
-            <a href="#home" className="hover:text-white">Home</a>
-            <a href="#about" className="hover:text-white">About</a>
-            <a href="#projects" className="hover:text-white">Projects</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
-          </div>
+        <nav className="flex gap-6 text-sm">
 
-          {/* Mobile button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setOpen(!open)}
-          >
-            ☰
-          </button>
+          <a href="#home" className={linkClass("home")}>Home</a>
+          <a href="#about" className={linkClass("about")}>About</a>
+          <a href="#experience" className={linkClass("experience")}>Experience</a>
+          <a href="#projects" className={linkClass("projects")}>Projects</a>
+          <a href="#contact" className={linkClass("contact")}>Contact</a>
 
-        </div>
-
-        {/* Mobile menu */}
-        {open && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-3 text-gray-300">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </div>
-        )}
+        </nav>
 
       </div>
-    </nav>
+    </header>
   );
 }

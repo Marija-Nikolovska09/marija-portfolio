@@ -1,55 +1,73 @@
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <div id="contact" className="py-24 px-6 max-w-4xl mx-auto">
-
-      <motion.h2
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        className="text-4xl font-bold text-center mb-12"
-      >
-        Contact
-      </motion.h2>
+    <section id="contact" className="py-28 px-6 max-w-4xl mx-auto">
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="bg-white/5 border border-white/10 rounded-2xl p-10 text-center backdrop-blur-md"
+        viewport={{ once: true }}
+        className="text-center"
       >
 
-        <p className="text-gray-300 mb-6">
-          Let’s build something amazing together 🚀
+        <p className="text-purple-400 uppercase tracking-[5px] text-sm">
+          Contact
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center">
+        <h2 className="text-5xl font-bold mt-4">
+          Let’s Work Together
+        </h2>
 
-          <a
-            href="mailto:marija.nikol09@gmail.com"
-            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl transition"
-          >
-            Email Me
-          </a>
-
-          <a
-            href="https://github.com"
-            target="_blank"
-            className="px-6 py-3 border border-white/20 hover:border-white/50 rounded-xl transition"
-          >
-            GitHub
-          </a>
-
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="px-6 py-3 border border-white/20 hover:border-white/50 rounded-xl transition"
-          >
-            LinkedIn
-          </a>
-
-        </div>
+        <p className="text-gray-400 mt-6">
+          I’m open to work opportunities and freelance projects.
+        </p>
 
       </motion.div>
-    </div>
+
+      <div className="mt-16 grid md:grid-cols-3 gap-6">
+
+        {/* Email */}
+        <a
+          href="mailto:marija.nikol09@gmail.com"
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition backdrop-blur-xl"
+        >
+          <FaEnvelope className="mx-auto text-3xl text-purple-400" />
+          <p className="mt-4 font-semibold">Email Me</p>
+          <p className="text-gray-400 text-sm mt-2">Direct contact</p>
+        </a>
+
+        {/* GitHub */}
+        <a
+          href="https://github.com/Marija-Nikolovska09/marija-portfolio"
+          target="_blank"
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition backdrop-blur-xl"
+        >
+          <FaGithub className="mx-auto text-3xl text-white" />
+          <p className="mt-4 font-semibold">GitHub</p>
+          <p className="text-gray-400 text-sm mt-2">My projects</p>
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href="https://linkedin.com/in/marija-nikolovska-1920b0212/"
+          target="_blank"
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition backdrop-blur-xl"
+        >
+          <FaLinkedin className="mx-auto text-3xl text-cyan-400" />
+          <p className="mt-4 font-semibold">LinkedIn</p>
+          <p className="text-gray-400 text-sm mt-2">Professional profile</p>
+        </a>
+
+      </div>
+
+      {/* FOOTER */}
+
+      <p className="text-center text-gray-500 mt-20 text-sm">
+        Built with React • Tailwind • Framer Motion
+      </p>
+
+    </section>
   );
 }
