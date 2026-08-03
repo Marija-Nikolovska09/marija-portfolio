@@ -1,21 +1,40 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-const featuredProject = {
-  title: "Homio",
-  subtitle: "Airbnb-inspired Rental Platform",
-  description:
-    "A modern rental marketplace for short and long-term stays. The platform includes property listings, search, booking flow, user dashboards and a responsive UI built with modern web technologies.",
-  tech: ["Vue.js", "Laravel", "MySQL", "REST API", ],
-  live: "https://YOUR-HOMIO.vercel.app",
-  github: "https://github.com/YOUR_USERNAME/homio",
-};
+const featuredProjects = [
+  {
+    title: "Homio",
+    subtitle: "Airbnb-inspired Long-Term Rental Platform",
+    description:
+      "A full-stack rental marketplace focused on long-term rentals. The platform includes property listings, landlord and tenant roles, search functionality, user profiles, favorites, reviews, messaging and a responsive modern interface.",
+    tech: ["Vue.js", "Laravel", "MySQL", "REST API"],
+    live: "https://YOUR-HOMIO.vercel.app",
+    github: "https://github.com/YOUR_USERNAME/homio",
+  },
+  {
+    title: "AI Resume Reviewer",
+    subtitle: "AI-powered Resume Analysis Platform",
+    description:
+      "An AI-powered application that analyzes resumes, extracts candidate information, evaluates skills, provides feedback and helps users improve their resumes using modern AI technologies.",
+    tech: [
+      "React",
+      "JavaScript",
+      "AI",
+      "OpenAI API",
+      "PDF.js",
+      "Tailwind CSS",
+    ],
+    live: "https://ai-resume-reviewer-ten-steel.vercel.app/",
+    github: "https://github.com/Marija-Nikolovska09/ai-resume-reviewer",
+  },
+];
 const projects = [
   {
     title: "Cinema Booking Platform",
     description:
       "Web application for online movie reservations and seat selection.",
     tech: ["React", "Laravel", "MySQL", "Tailwind"],
+    live: "https://www.3dkinobitola.com/",
   },
   {
     title: "Survey & Analytics Platform",
@@ -57,142 +76,183 @@ export default function Projects() {
 
       {/* FEATURED PROJECT */}
 
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        whileHover={{ y: -8 }}
-        className="mt-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
-      >
-        <div className="grid lg:grid-cols-2">
+     <div className="space-y-12 mt-16">
 
-          {/* LEFT */}
+{featuredProjects.map((project) => (
 
-          <div className="p-10 lg:p-14">
+<motion.div
+  key={project.title}
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  whileHover={{ y: -8 }}
+  className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
+>
 
-            <span className="text-purple-400 uppercase text-sm tracking-[4px]">
-              Featured Project
-            </span>
+<div className="grid lg:grid-cols-2">
 
-            <h3 className="text-4xl font-bold mt-3">
-              {featuredProject.title}
-            </h3>
+{/* LEFT */}
 
-            <p className="text-cyan-400 mt-2">
-              {featuredProject.subtitle}
-            </p>
+<div className="p-10 lg:p-14">
 
-            <p className="text-gray-300 mt-8 leading-8">
-              {featuredProject.description}
-            </p>
+<span className="text-purple-400 uppercase text-sm tracking-[4px]">
+Featured Project
+</span>
 
-            <div className="flex flex-wrap gap-3 mt-8">
-              {featuredProject.tech.map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-2 rounded-full bg-purple-600/20 border border-purple-500/20 text-sm"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
 
-            <div className="flex gap-4 mt-10">
+<h3 className="text-4xl font-bold mt-3">
+{project.title}
+</h3>
 
-              <a
-                href={featuredProject.live}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 font-semibold flex items-center gap-3 hover:scale-105 transition"
-              >
-                Live Demo
-                <FaExternalLinkAlt />
-              </a>
 
-              <a
-                href={featuredProject.github}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 rounded-xl border border-white/15 hover:border-purple-500 transition flex items-center gap-3"
-              >
-                GitHub
-                <FaGithub />
-              </a>
+<p className="text-cyan-400 mt-2">
+{project.subtitle}
+</p>
 
-            </div>
 
-          </div>
+<p className="text-gray-300 mt-8 leading-8">
+{project.description}
+</p>
 
-          {/* RIGHT */}
 
-          <div className="relative flex items-center justify-center p-10">
+<div className="flex flex-wrap gap-3 mt-8">
 
-            <div className="w-full h-[340px] rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/20 to-cyan-500/10 flex items-center justify-center">
+{project.tech.map((item)=>(
+<span
+key={item}
+className="px-4 py-2 rounded-full bg-purple-600/20 border border-purple-500/20 text-sm"
+>
+{item}
+</span>
+))}
 
-              <div className="text-center">
+</div>
 
-                <h2 className="text-5xl font-black">
-                  HOMIO
-                </h2>
 
-                <p className="text-gray-400 mt-4">
-                  Live Preview
-                </p>
+<div className="flex gap-4 mt-10">
 
-                <div className="mt-8 flex gap-3 justify-center flex-wrap">
 
-                  {featuredProject.tech.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3 py-1 rounded-full bg-white/10 text-sm"
-                    >
-                      {item}
-                    </span>
-                  ))}
+<a
+href={project.live}
+target="_blank"
+rel="noreferrer"
+className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 font-semibold flex items-center gap-3 hover:scale-105 transition"
+>
+Live Demo
+<FaExternalLinkAlt/>
+</a>
 
-                </div>
 
-              </div>
+<a
+href={project.github}
+target="_blank"
+rel="noreferrer"
+className="px-6 py-3 rounded-xl border border-white/15 hover:border-purple-500 transition flex items-center gap-3"
+>
+GitHub
+<FaGithub/>
+</a>
 
-            </div>
 
-          </div>
+</div>
 
-        </div>
-      </motion.div>
+
+</div>
+
+
+{/* RIGHT */}
+
+<div className="relative flex items-center justify-center p-10">
+
+
+<div className="w-full h-[340px] rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/20 to-cyan-500/10 flex items-center justify-center">
+
+
+<div className="text-center">
+
+<h2 className="text-5xl font-black">
+{project.title === "Homio" ? "HOMIO" : "AI"}
+</h2>
+
+
+<p className="text-gray-400 mt-4">
+Live Preview
+</p>
+
+
+<div className="mt-8 flex gap-3 justify-center flex-wrap">
+
+{project.tech.map((item)=>(
+<span
+key={item}
+className="px-3 py-1 rounded-full bg-white/10 text-sm"
+>
+{item}
+</span>
+))}
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</motion.div>
+
+))}
+
+</div>
 
       {/* OTHER PROJECTS */}
 
-      <div className="grid md:grid-cols-3 gap-6 mt-12">
+    <div className="grid md:grid-cols-3 gap-6 mt-12">
+  {projects.map((project) => (
+    <motion.div
+      key={project.title}
+      whileHover={{ y: -8 }}
+      className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-7 flex flex-col"
+    >
+      <h3 className="text-2xl font-bold">
+        {project.title}
+      </h3>
 
-        {projects.map((project) => (
-          <motion.div
-            key={project.title}
-            whileHover={{ y: -8 }}
-            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-7"
+      <p className="text-gray-400 mt-4 leading-7 flex-1">
+        {project.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2 mt-6">
+        {project.tech.map((item) => (
+          <span
+            key={item}
+            className="px-3 py-1 rounded-full bg-white/10 text-sm"
           >
-            <h3 className="text-2xl font-bold">
-              {project.title}
-            </h3>
-
-            <p className="text-gray-400 mt-4 leading-7">
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-6">
-              {project.tech.map((item) => (
-                <span
-                  key={item}
-                  className="px-3 py-1 rounded-full bg-white/10 text-sm"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+            {item}
+          </span>
         ))}
-
       </div>
+
+      {project.live && (
+        <a
+          href={project.live}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 px-5 py-3 font-semibold hover:scale-105 transition"
+        >
+          Live Demo
+          <FaExternalLinkAlt />
+        </a>
+      )}
+    </motion.div>
+  ))}
+</div>
 
     </section>
   );
