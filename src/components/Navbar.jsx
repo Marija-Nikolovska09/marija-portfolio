@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 
         <h1 className="font-bold text-xl">
-          Maria<span className="text-purple-400">.dev</span>
+          Marija<span className="text-purple-400">.dev</span>
         </h1>
 
         <nav className="flex gap-6 text-sm">
