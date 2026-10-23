@@ -34,7 +34,7 @@ const projects = [
     description:
       "Web application for online movie reservations and seat selection.",
     tech: ["React", "Laravel", "MySQL", "Tailwind"],
-    live: "https://www.3dkinobitola.com/",
+    live: "https://kartick.mk/",
   },
   {
     title: "Survey & Analytics Platform",
